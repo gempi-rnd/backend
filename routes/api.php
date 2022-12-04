@@ -19,6 +19,9 @@ Route::prefix('auth')->group(function () {
     Route::post('register', App\Http\Controllers\AuthController::class . '@register')->name('register.api');
 });
 
+Route::get('/login/{provider}', [App\Http\Controllers\AuthController::class, 'redirectToProvider']);
+Route::get('/login/{provider}/callback', [App\Http\Controllers\AuthController::class, 'handleProviderCallback']);
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', App\Http\Controllers\AuthController::class . '@logout')->name('logout.api');
     Route::get('me', App\Http\Controllers\MeController::class . '@me')->name('me.api');

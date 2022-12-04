@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'role_id', 'name', 'email', 'password',
     ];
 
     /**
@@ -44,5 +44,10 @@ class User extends Authenticatable
     public function getRoleAttribute()
     {
         return json_decode(Role::where('id', $this->role_id)->first());
+    }
+
+    public function providers()
+    {
+        return $this->hasMany(Provider::class, 'user_id', 'id');
     }
 }
