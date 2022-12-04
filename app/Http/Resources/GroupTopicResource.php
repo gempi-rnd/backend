@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Tenant;
+namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TenantResource extends JsonResource
+class GroupTopicResource extends JsonResource
 {
     public $status;
     public $message;

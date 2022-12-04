@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id')->unsigned()->unique();
-            $table->bigInteger('tenant_id')->unsigned();
+            $table->uuid('id')->primary();
+            $table->uuid('user_id')->unique();
+            $table->uuid('tenant_id');
             $table->text('full_name');
             $table->text('email')->unique();
             $table->text('whatsapp')->unique();
@@ -30,6 +30,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')
                 ->onCascade('no action');
+            $table->softDeletes();
         });
     }
 

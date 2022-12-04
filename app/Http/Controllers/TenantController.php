@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Tenant\TenantResource;
+use App\Http\Resources\TenantResource;
 use Illuminate\Http\Request;
-use App\Models\Tenant\Tenant;
+use App\Models\Tenant;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 

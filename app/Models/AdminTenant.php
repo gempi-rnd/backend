@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models\Student;
+namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class AdminTenant extends Model
 {
     use HasFactory;
+    use Uuids;
 
     protected $fillable = [
         'user_id',
@@ -17,8 +19,9 @@ class Student extends Model
         'whatsapp',
         'photo'
     ];
-    public function student()
+
+    public function adminTenant()
     {
-        return $this->belongsTo('App\Student');
+        return $this->belongsTo('App\AdminTenant');
     }
 }

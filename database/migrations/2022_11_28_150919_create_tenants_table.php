@@ -14,15 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tenants', function (Blueprint $table) {
-            $table->id()->comment('Primary Key');
+            $table->uuid('id')->primary();
             $table->text('slug');
             $table->text('name');
-            $table->text('logo');
+            $table->text('logo')->nullable();
             $table->text('locale')->default('id');
             $table->text('timezone')->default('Asia/Jakarta');
             $table->text('email')->unique();
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
